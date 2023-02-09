@@ -11,7 +11,7 @@ function Landing () {
             </div>
             <div className="">
                 <p className="tracking-wide uppercase text-2xl mb-10">NOW IN STOCK</p>
-                <h2 className="tracking-wide font-semibold text-5xl uppercase font-logo max-w-2xl mb-10">Professional gloves EVERLAST MX Pro Fight</h2>
+                <h2 className="tracking-wide font-semibold text-5xl uppercase font-logo max-w-2xl mb-12">Professional gloves EVERLAST MX Pro Fight</h2>
                 <div className="">
                     <Button title="SHOP NOW" />
                 </div>

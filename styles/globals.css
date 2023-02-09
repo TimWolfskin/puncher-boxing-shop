@@ -15,9 +15,14 @@
     .headerLink {
         @apply font-links cursor-pointer opacity-75 transition hover:opacity-100 text-[#FCFCFC] text-lg font-semibold tracking-wider;
     }
+
     .headerIcon {
         @apply h-6 w-6 cursor-pointer opacity-75 transition hover:opacity-100 fill-[#FCFCFC];
-      }
+    }
+
+    .container {
+        max-width: 1820px;
+        margin: 0 auto;
+        padding: 0 10px;
+    }
 }
-
-
