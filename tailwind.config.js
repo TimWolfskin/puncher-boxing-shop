@@ -6,7 +6,13 @@ module.exports = {
     './app/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        body: ["Montserrat", "sans-serif"],
+        logo: ["Raleway", "sans-serif"],
+        links: ["Teko", "sans-serif"],
+      }
+    },
   },
   plugins: [],
 }
