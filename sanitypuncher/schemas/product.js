@@ -1,5 +1,3 @@
-
-
 export default {
   name: "product",
   title: "Product",
@@ -27,6 +25,11 @@ export default {
       options: {
         hotspot: true,
       },
+    },
+    {
+      title: 'Size',
+      name: 'size',
+      type: 'number'
     },
     {
       name: "category",

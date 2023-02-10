@@ -10,3 +10,31 @@ interface Category {
     };
     title: string;
   }
+
+  interface Image {
+    _key: string;
+    _type: "image";
+    asset: {
+      url: string;
+    };
+  }
+
+  interface NewProduct {
+    _id: string;
+    _createdAt: string;
+    _updatedAt: string;
+    _rev: string;
+    _type: "newproduct";
+    title: string;
+    price: number;
+    slug: {
+      _type: "slug";
+      current: string;
+    };
+    description: string;
+    category: {
+      _type: "reference";
+      _ref: string;
+    };
+    image: Image[];
+  }

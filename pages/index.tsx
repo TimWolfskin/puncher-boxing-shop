@@ -7,13 +7,15 @@ import Landing from '../components/Landing'
 import New from '../components/New'
 import { GetServerSideProps } from "next";
 import { fetchCategories } from "../utils/fetchCategories";
+import { fetchNewProducts } from '../utils/fetchNewProducts'
 
 interface Props {
-  categories: Category[]
+  categories: Category[];
+  newProducts: NewProduct[]
 }
 
-const Home = ({categories}: Props) => {
-  console.log(categories)
+const Home = ({categories, newProducts}: Props) => {
+  console.log(newProducts)
   return (
     <div className="">
       <Head>
@@ -24,7 +26,7 @@ const Home = ({categories}: Props) => {
       <main>
         <Landing />
         <Benefits />
-        <New  categories={categories} />
+        <New  categories={categories} newProducts={newProducts} />
       </main>
     </div>
   )
@@ -36,11 +38,13 @@ export default Home
 
 export const getServerSideProps: GetServerSideProps<Props> = async () => {
   const categories = await fetchCategories()
+  const newProducts = await fetchNewProducts()
 
 
   return {
     props: {
       categories,
+      newProducts
     },
   }
 }

@@ -5,9 +5,10 @@ import { Tab } from "@headlessui/react";
 
 interface Props {
   categories: Category[];
+  newProducts: NewProduct[]
 }
 
-const New = ({ categories }: Props) => {
+const New = ({ categories, newProducts }: Props) => {
   return (
     <div>
       <h1 className="text-center text-4xl font-semibold tracking-wide text-[#333] mb-12">
@@ -32,10 +33,10 @@ const New = ({ categories }: Props) => {
           ))}
         </Tab.List>
         <Tab.Panels className="mx-auto max-w-fit pt-10 pb-24 sm:px-4">
-          {/* <Tab.Panel className="tabPanel">{showProducts(0)}</Tab.Panel>
+          <Tab.Panel className="tabPanel">{showProducts(0)}</Tab.Panel>
               <Tab.Panel className="tabPanel">{showProducts(1)}</Tab.Panel>
               <Tab.Panel className="tabPanel">{showProducts(2)}</Tab.Panel>
-              <Tab.Panel className="tabPanel">{showProducts(3)}</Tab.Panel> */}
+              <Tab.Panel className="tabPanel">{showProducts(3)}</Tab.Panel>
         </Tab.Panels>
       </Tab.Group>
     </div>
