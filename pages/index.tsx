@@ -4,8 +4,16 @@ import Image from 'next/image'
 import Benefits from '../components/Benefits'
 import Header from '../components/Header'
 import Landing from '../components/Landing'
+import New from '../components/New'
+import { GetServerSideProps } from "next";
+import { fetchCategories } from "../utils/fetchCategories";
 
-const Home: NextPage = () => {
+interface Props {
+  categories: Category[]
+}
+
+const Home = ({categories}: Props) => {
+  console.log(categories)
   return (
     <div className="">
       <Head>
@@ -16,9 +24,23 @@ const Home: NextPage = () => {
       <main>
         <Landing />
         <Benefits />
+        <New  categories={categories} />
       </main>
     </div>
   )
 }
 
 export default Home
+
+//: NextPage
+
+export const getServerSideProps: GetServerSideProps<Props> = async () => {
+  const categories = await fetchCategories()
+
+
+  return {
+    props: {
+      categories,
+    },
+  }
+}
