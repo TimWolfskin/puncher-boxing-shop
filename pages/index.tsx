@@ -15,7 +15,7 @@ interface Props {
 }
 
 const Home = ({categories, newProducts}: Props) => {
-  console.log(newProducts)
+  
   return (
     <div className="">
       <Head>

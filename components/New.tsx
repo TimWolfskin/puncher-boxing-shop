@@ -1,14 +1,20 @@
 import React from "react";
 import { Tab } from "@headlessui/react";
-// import { GetServerSideProps } from "next";
+import NewProduct from "./NewProduct";
+//import { GetServerSideProps } from "next";
 // import { fetchCategories } from "../utils/fetchCategories";
 
 interface Props {
   categories: Category[];
-  newProducts: NewProduct[]
+  newProducts: NewProduct[];
 }
 
 const New = ({ categories, newProducts }: Props) => {
+  const showNewProducts = (category: number) => {
+    return newProducts
+    .filter((newProduct) => newProduct.category._ref === categories[category]._id)
+    .map((newProduct) => <NewProduct newProduct={newProduct} key={newProduct._id} /> ) //filter new products by category
+  }
   return (
     <div>
       <h1 className="text-center text-4xl font-semibold tracking-wide text-[#333] mb-12">
@@ -33,10 +39,10 @@ const New = ({ categories, newProducts }: Props) => {
           ))}
         </Tab.List>
         <Tab.Panels className="mx-auto max-w-fit pt-10 pb-24 sm:px-4">
-          <Tab.Panel className="tabPanel">{showProducts(0)}</Tab.Panel>
-              <Tab.Panel className="tabPanel">{showProducts(1)}</Tab.Panel>
-              <Tab.Panel className="tabPanel">{showProducts(2)}</Tab.Panel>
-              <Tab.Panel className="tabPanel">{showProducts(3)}</Tab.Panel>
+          <Tab.Panel className="tabPanel">{showNewProducts(0)}</Tab.Panel>
+              <Tab.Panel className="tabPanel">{showNewProducts(1)}</Tab.Panel>
+              <Tab.Panel className="tabPanel">{showNewProducts(2)}</Tab.Panel>
+              <Tab.Panel className="tabPanel">{showNewProducts(3)}</Tab.Panel>
         </Tab.Panels>
       </Tab.Group>
     </div>
