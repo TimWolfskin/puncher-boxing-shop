@@ -10,6 +10,9 @@ interface Props {
 
 
 function Product({ product }: Props) {
+  const addItemToBasket = () => {
+
+  }
 
     return (
         <div className="flex h-fit w-[320px] select-none flex-col space-y-3 rounded-xl bg-[#35383C] p-8 md:h-[500px] md:w-[400px] md:p-10">
@@ -30,6 +33,7 @@ function Product({ product }: Props) {
     
             <div
               className="flex h-16 w-16 flex-shrink-0 cursor-pointer items-center justify-center rounded-full bg-black"
+              onClick={addItemToBasket}
             >
               <ShoppingCartIcon className="h-8 w-8 text-white" />
             </div>
