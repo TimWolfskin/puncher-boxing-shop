@@ -6,9 +6,10 @@ import LocalMallOutlinedIcon from "@mui/icons-material/LocalMallOutlined";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import { useSelector } from "react-redux";
 import { selectBasketItems } from "../redux/basketSlice";
+import { signIn, signOut, useSession } from "next-auth/react";
 
 function Header() {
-  const session = false;
+  const { data: session } = useSession();
   const items = useSelector(selectBasketItems);
 
   return (
@@ -42,15 +43,20 @@ function Header() {
         {session ? (
           <Image
             src={
-              "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pngegg.com%2Fen%2Fsearch%3Fq%3Davatar&psig=AOvVaw05PlzAQLYLwpOrvoWmU1My&ust=1676009078768000&source=images&cd=vfe&ved=0CBAQjRxqFwoTCPCMtsDih_0CFQAAAAAdAAAAABAG"
+              session.user?.image ||
+              "https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y"
             }
             alt=""
             className="cursor-pointer rounded-full"
             width={34}
             height={34}
+            onClick={() => signOut()}
           />
         ) : (
-          <AccountCircleOutlinedIcon className="headerIcon" />
+          <AccountCircleOutlinedIcon
+            className="headerIcon"
+            onClick={() => signIn()}
+          />
         )}
       </div>
     </header>
