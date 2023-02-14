@@ -4,17 +4,20 @@ import React from "react";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import LocalMallOutlinedIcon from "@mui/icons-material/LocalMallOutlined";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
+import { useSelector } from "react-redux";
+import { selectBasketItems } from "../redux/basketSlice";
 
 function Header() {
   const session = false;
+  const items = useSelector(selectBasketItems);
+
   return (
     <header className="sticky top-0 z-30 flex w-full items-center justify-between bg-[#000] pt-5 pb-5">
       <div className="flex items-center justify-center md:w-1/5">
         <Link href="/">
-          {/* <div className="relative h-48 w-48 cursor-pointer">
-            <Image src="/logo-one.svg" alt="" layout="fill" objectFit="contain" />
-          </div> */}
-          <h1 className="font-logo text-5xl font-bold text-[#ee0000]">punchR</h1>
+          <h1 className="font-logo text-5xl font-bold text-[#ee0000]">
+            punchR
+          </h1>
         </Link>
       </div>
       <div className="hidden flex-1 items-center justify-center space-x-8 md:flex">
@@ -28,9 +31,11 @@ function Header() {
         <SearchOutlinedIcon className="headerIcon" />
         <Link href="/checkout">
           <div className="relative cursor-pointer">
-            <span className="absolute -right-1 -top-1 z-50 flex h-4 w-4 items-center justify-center rounded-full bg-[#ee0000] text-[10px] text-[#FCFCFC]">
-              5
-            </span>
+            {items.length > 0 && (
+              <span className="absolute -right-1 -top-1 z-50 flex h-4 w-4 items-center justify-center rounded-full bg-[#ee0000] text-[10px] text-[#FCFCFC]">
+                {items.length}
+              </span>
+            )}
             <LocalMallOutlinedIcon className="headerIcon" />
           </div>
         </Link>
